@@ -1,0 +1,43 @@
+# Submission configuration for automated evaluation
+# This file defines commands for setup, data pulling, pipeline reproduction, and API service
+
+setup:
+  description: "Install all dependencies and configure the environment"
+  cmd: |
+    pip install -r requirements.txt
+    dvc remote modify local_remote url /tmp/dvc-remote
+
+dvc-pull:
+  description: "Pull all DVC-tracked data and model artifacts from remote storage"
+  cmd: |
+    dvc pull
+
+repro:
+  description: "Reproduce the entire ML pipeline from scratch"
+  cmd: |
+    dvc repro
+
+run-service:
+  description: "Start the FastAPI prediction service"
+  cmd: |
+    uvicorn api.main:app --host 0.0.0.0 --port 8000
+
+docker-build:
+  description: "Build the Docker image"
+  cmd: |
+    docker build -t ml-sales-pipeline .
+
+docker-run:
+  description: "Run the Docker container"
+  cmd: |
+    docker run -p 8000:8000 ml-sales-pipeline
+
+test:
+  description: "Run automated tests"
+  cmd: |
+    python -m pytest tests/ -v
+
+metrics:
+  description: "Display model evaluation metrics"
+  cmd: |
+    dvc metrics show

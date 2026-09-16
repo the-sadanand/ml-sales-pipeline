@@ -1,0 +1,23 @@
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  features_dir: data/features
+  test_size: 0.2
+  random_state: 42
+
+features:
+  date_features: true
+  competition_features: true
+  promo_features: true
+
+train:
+  model_type: xgboost
+  n_estimators: 500
+  max_depth: 6
+  learning_rate: 0.1
+  subsample: 0.8
+  colsample_bytree: 0.8
+  random_state: 42
+
+evaluate:
+  metrics_dir: metrics

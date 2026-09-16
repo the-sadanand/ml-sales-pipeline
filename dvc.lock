@@ -1,0 +1,110 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw/store.csv
+      hash: md5
+      md5: 747b04a0be0df4e2cfeecf9a13338cd4
+      size: 59170
+    - path: data/raw/train.csv
+      hash: md5
+      md5: a7da1b89e0206f83fdc1e7b561c2747c
+      size: 3414633
+    - path: src/preprocess.py
+      hash: md5
+      md5: d3b5b2171caa10271e5283dc25cb3f89
+      size: 3103
+    params:
+      params.yaml:
+        data.processed_dir: data/processed
+        data.raw_dir: data/raw
+    outs:
+    - path: data/processed/train_cleaned.csv
+      hash: md5
+      md5: 84b2690ee46581372198138e4b3aab92
+      size: 6790148
+  feature_engineering:
+    cmd: python src/feature_engineering.py
+    deps:
+    - path: data/processed/train_cleaned.csv
+      hash: md5
+      md5: 84b2690ee46581372198138e4b3aab92
+      size: 6790148
+    - path: src/feature_engineering.py
+      hash: md5
+      md5: ee92e4b2542b859ac5c35cce3ade7765
+      size: 6032
+    params:
+      params.yaml:
+        data.features_dir: data/features
+        data.processed_dir: data/processed
+        data.random_state: 42
+        data.test_size: 0.2
+        features:
+          date_features: true
+          competition_features: true
+          promo_features: true
+    outs:
+    - path: data/features/test_features.csv
+      hash: md5
+      md5: ba0e97db9e06a39c957b827db9309b98
+      size: 1588764
+    - path: data/features/train_features.csv
+      hash: md5
+      md5: 7b3a04f85e94668f5d3d0f32b1c6d0b1
+      size: 6353425
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/features/train_features.csv
+      hash: md5
+      md5: 7b3a04f85e94668f5d3d0f32b1c6d0b1
+      size: 6353425
+    - path: src/train.py
+      hash: md5
+      md5: b182bba18cdae852fc0aadf28f1b646c
+      size: 2337
+    params:
+      params.yaml:
+        train:
+          model_type: xgboost
+          n_estimators: 500
+          max_depth: 6
+          learning_rate: 0.1
+          subsample: 0.8
+          colsample_bytree: 0.8
+          random_state: 42
+    outs:
+    - path: models/feature_names.json
+      hash: md5
+      md5: f38604f4da5277b8113c02bb0667ea69
+      size: 530
+    - path: models/model.joblib
+      hash: md5
+      md5: f39da229e0ee3b54d50fbbab481cb239
+      size: 2421198
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/features/test_features.csv
+      hash: md5
+      md5: ba0e97db9e06a39c957b827db9309b98
+      size: 1588764
+    - path: models/model.joblib
+      hash: md5
+      md5: f39da229e0ee3b54d50fbbab481cb239
+      size: 2421198
+    - path: src/evaluate.py
+      hash: md5
+      md5: 5d1972b2f745de334c58f664e91d0324
+      size: 2948
+    outs:
+    - path: metrics/feature_importance.json
+      hash: md5
+      md5: d541a3676db49cfe29b99bf0389b2a1d
+      size: 1897
+    - path: metrics/metrics.json
+      hash: md5
+      md5: 39bcfd2ae555f415e0f578600f020ddb
+      size: 133

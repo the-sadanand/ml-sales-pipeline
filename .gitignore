@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# DVC - data and model artifacts (tracked by DVC, not Git)
+/data/raw/*.csv
+/data/processed/*.csv
+/data/features/*.csv
+/models/*.joblib
+
+# DVC cache
+/dvc-remote/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/*.ipynb
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Environment
+.env
+*.log

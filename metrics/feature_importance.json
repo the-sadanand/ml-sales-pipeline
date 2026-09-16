@@ -1,0 +1,82 @@
+[
+    {
+        "feature": "Promo",
+        "importance": 0.3389427959918976
+    },
+    {
+        "feature": "StoreType_d",
+        "importance": 0.03303908556699753
+    },
+    {
+        "feature": "Assortment_b",
+        "importance": 0.029338471591472626
+    },
+    {
+        "feature": "IsPromo2Active",
+        "importance": 0.029052967205643654
+    },
+    {
+        "feature": "CompetitionOpenSinceMonth",
+        "importance": 0.029001731425523758
+    },
+    {
+        "feature": "CompetitionOpen",
+        "importance": 0.028730742633342743
+    },
+    {
+        "feature": "StoreType_a",
+        "importance": 0.02871900610625744
+    },
+    {
+        "feature": "CompetitionOpenSinceYear",
+        "importance": 0.028237534686923027
+    },
+    {
+        "feature": "StoreType_b",
+        "importance": 0.028202692046761513
+    },
+    {
+        "feature": "Assortment_c",
+        "importance": 0.028058884665369987
+    },
+    {
+        "feature": "CompetitionDistance",
+        "importance": 0.027968430891633034
+    },
+    {
+        "feature": "Day",
+        "importance": 0.027933496981859207
+    },
+    {
+        "feature": "Promo2Open",
+        "importance": 0.02784905396401882
+    },
+    {
+        "feature": "Promo2SinceYear",
+        "importance": 0.0276524405926466
+    },
+    {
+        "feature": "Promo2SinceWeek",
+        "importance": 0.02754589542746544
+    },
+    {
+        "feature": "StoreType_c",
+        "importance": 0.027495158836245537
+    },
+    {
+        "feature": "WeekOfYear",
+        "importance": 0.02728116512298584
+    },
+    {
+        "feature": "Assortment_a",
+        "importance": 0.02726762369275093
+    },
+    {
+        "feature": "Store",
+        "importance": 0.0265121478587389
+    },
+    {
+        "feature": "Promo2",
+        "importance": 0.025978216901421547
+    }
+]
