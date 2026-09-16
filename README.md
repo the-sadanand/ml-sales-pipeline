@@ -157,7 +157,7 @@ ml-sales-pipeline/
 
 ```bash
 # 1. Clone the repository
-git clone <repository-url>
+git clone https://github.com/the-sadanand/ml-sales-pipeline
 cd ml-sales-pipeline
 
 # 2. Create virtual environment (recommended)
